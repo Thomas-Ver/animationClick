@@ -5,7 +5,7 @@ description = "Default template for PDM package"
 authors = [
     {name = "Thomas Vercier", email = "thomas.vercier@etu.emse.fr"},
 ]
-dependencies = []
+dependencies = ["Pillow>=11.0.0", "numpy>=2.1.3", "opencv-python>=4.10.0.84"]
 requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "MIT"}
