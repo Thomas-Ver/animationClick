@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 import cv2 as cv
 import numpy as np
 
+
 # Création de la fenêtre principale
 root = tk.Tk()
 root.title("Fenêtre d'Interaction avec l'Image")
