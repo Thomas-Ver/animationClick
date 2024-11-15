@@ -10,7 +10,7 @@ root = tk.Tk()
 root.title("Fenêtre d'Interaction avec l'Image")
 
 # Charger l'image avec Pillow
-image_path = "mandel.jpg"  # Remplace par le chemin de ton image
+image_path = "assets/mandel.jpg"  # Remplace par le chemin de ton image
 imageio = cv.imread(image_path)
 image = Image.open(image_path)
 photo = ImageTk.PhotoImage(image)
@@ -46,14 +46,15 @@ def on_click(event):
     #imodif[y_start:y_end, x_start:x_end] = imodif[y_start:y_end, x_start:x_end]*M
 
     ### JUSTE 0 PARTOUR NULL: ###
-    #imodif[y_start:y_end, x_start:x_end] = np.zeros((y_end - y_start, x_end - x_start))
+    imodif[y_start:y_end, x_start:x_end] = np.zeros((y_end - y_start, x_end - x_start,3))
     
+    '''
     ### TENTATIVE DEFORMATION ### : https://stackoverflow.com/questions/58237736/how-to-do-deformations-in-opencv
     input_pts = np.array([[x_start, y_start], [x_end, y_start], [x_end, y_end], [x_start, y_end]])
     output_pts = np.array([[x_start, y_end],[x_start, y_start], [x_end, y_start], [x_end, y_end]])
     M=cv.getPerspectiveTransform(input_pts, output_pts)
     imodif = cv.warpPerspective(imodif, M, (imodif.shape[1], imodif.shape[0]))
-    
+    '''
 
     imagem = Image.fromarray(imodif)
     photom = ImageTk.PhotoImage(imagem)
