@@ -24,7 +24,6 @@ def on_click(event): # Fonction appelée lors d'un clic sur l'image
     photom = ImageTk.PhotoImage(imagem)
 
     canvas.itemconfig(image_container, image=photom) # Mettre à jour l'image sur le canvas
-    
     canvas.image = photom # Conserver une référence à l'image pour éviter qu'elle soit supprimée par le garbage collector
  
     root.after(2000, restore_image)    # Restaurer l'image originale après 2 secondes
