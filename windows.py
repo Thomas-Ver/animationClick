@@ -12,7 +12,6 @@ def restore_image(): # Fonction pour restaurer l'image originale
     canvas.image = photo
 
 
-
 def on_click(event): # Fonction appelée lors d'un clic sur l'image
     imodif = imageCV.copy()
     x, y = event.x, event.y
