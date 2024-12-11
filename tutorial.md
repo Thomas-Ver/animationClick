@@ -13,13 +13,13 @@ git clone https://github.com/Thomas-Ver/animationClick.git
 cd animationClick 
 ```
 
-Ensuite il faut créer l'environment python pour le projet:
-``` pdm init ```
-Suivez ce que vous dit pdm.
-Il faut maintenant installer les librairies nescessaire pour nôtre projet:
+Ensuite il faut créer l'environment python pour le projet:  
+``` pdm init ```  
+Suivez ce que vous dit pdm.  
+Il faut maintenant installer les librairies nescessaire pour nôtre projet:  
 ```pdm  sync```
 
-Vous pouvez maintenant lancez le programme:
+Vous pouvez maintenant lancez le programme:  
 ```pdm run python windows.py```
 
 
