@@ -68,7 +68,7 @@ def deform(img,x,y): # https://stackoverflow.com/questions/58237736/how-to-do-de
     """
     radius = 30
     power = 1.6 # >1.0 for expansion, <1.0 for shrinkage
-    height, width, _ = img.shape
+    height, width = img.shape
     map_y = np.zeros((height,width),dtype=np.float32)
     map_x = np.zeros((height,width),dtype=np.float32)
     # create index map
