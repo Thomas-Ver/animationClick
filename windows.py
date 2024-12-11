@@ -6,18 +6,25 @@ import cv2 as cv
 import numpy as np
 import modif_image as modif
 
-
-def restore_image(): # Fonction pour restaurer l'image originale
+def restore_image():
+    """
+    Fonction pour restaurer l'image originale sur le canvas.
+    """
     canvas.itemconfig(image_container, image=photo)
     canvas.image = photo
 
+def on_click(event):
+    """
+    Fonction appelée lors d'un clic sur l'image. Modifie l'image en fonction du type d'animation choisi.
 
-def on_click(event): # Fonction appelée lors d'un clic sur l'image
+    Args:
+        event (tkinter.Event): L'événement de clic contenant les coordonnées du clic.
+    """
     imodif = imageCV.copy()
     x, y = event.x, event.y
     print(f"Clic détecté aux coordonnées : {x}, {y}")
 
-    imodif = modif.deform(imodif,x,y)
+    imodif = funmodif(imodif, x, y)
 
     imagem = Image.fromarray(imodif)
     photom = ImageTk.PhotoImage(imagem)
@@ -29,11 +36,27 @@ def on_click(event): # Fonction appelée lors d'un clic sur l'image
 
 ### ---- Main ---- ###
 
+print("Choisir le type d'animation à appliquer sur l'image en cliquant dessus :")
+print("1 - Déformation")
+print("2 - Noircir")
+print("3 - Multiplier par une matrice aléatoire")
+
+choix = input(">")
+if choix == "1":
+    funmodif = modif.deform
+elif choix == "2":
+    funmodif = modif.carre_noir
+elif choix == "3":
+    funmodif = modif.random_mult
+else:
+    print("Choix invalide")
+    exit()
+
 root = tk.Tk() # Création de la fenêtre principale
 root.title("Fenêtre principale") 
 
 image_path = "assets/mandel.jpg"  
-imageCV = cv.imread(image_path) #on lit l'image avec opencv pour pouvoir la modifier 
+imageCV = cv.imread(image_path)[:,:,0] #on lit l'image avec opencv pour pouvoir la modifier 
 image = Image.open(image_path)
 photo = ImageTk.PhotoImage(image) #charge l'image pour la print dans la fenêtre
 
@@ -46,4 +69,3 @@ canvas.image = photo # Conservation de l'image
 canvas.bind("<Button-1>", on_click) # Associer l'événement de clic au canvas
 
 root.mainloop() # Lancer la boucle principale de la fenêtre
-
